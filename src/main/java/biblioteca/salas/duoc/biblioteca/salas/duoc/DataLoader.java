@@ -31,17 +31,22 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (!crearTiposSalas(3)) {
-            throw new Exception("No se puede crear tipo de salas");
+        try {
+            if (!crearTiposSalas(3)) {
+                throw new Exception("No se puede crear tipo de salas");
+            }
+
+            if (!crearCarreras(3)) {
+                throw new Exception("No se puede crear carreras");
+            }
+
+            if (!crearEstudiantes(3)) {
+                throw new Exception("No se puede crear estudiantes");
+            }
+        } catch (Exception e) {
+            return;
         }
 
-        if (!crearCarreras(3)) {
-            throw new Exception("No se puede crear carreras");
-        }
-
-        if (!crearEstudiantes(3)) {
-            throw new Exception("No se puede crear estudiantes");
-        }
     }
 
     private boolean crearTiposSalas(int cantidadTiposSalas) {
